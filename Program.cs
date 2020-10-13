@@ -8,13 +8,14 @@ namespace Descriptive_Statistics
     {
         static void Main(string[] args)
         {
-
+            double[] testArray = { 1, 4, 6, 8, 9, 10 };
+            Console.WriteLine(GetStatisticalData(testArray));
         }
 
 
 
         /* Returns the double with the maximum value from the array of doubles */
-        public double GetMaximum(double[] numbers)
+        public static double GetMaximum(double[] numbers)
         {
             if (numbers == null || numbers.Length == 0) throw new ArgumentException("Passed array should not be empty");
             return numbers.Max();
@@ -22,7 +23,7 @@ namespace Descriptive_Statistics
 
 
         /* Returns the double with the minimum value from the array of doubles */
-        public double GetMinimum(double[] numbers)
+        public static double GetMinimum(double[] numbers)
         {
             if (numbers == null || numbers.Length == 0) throw new ArgumentException("Passed array should not be empty");
             return numbers.Min();
@@ -31,7 +32,7 @@ namespace Descriptive_Statistics
 
         /* Returns the difference between the element with the maximum value
         * and the element with the minimum value in an array.*/
-        public double GetRange(double[] numbers)
+        public static double GetRange(double[] numbers)
         {
             if (numbers == null || numbers.Length == 0) throw new ArgumentException("Passed array should not be empty");
             return numbers.Max() - numbers.Min();
@@ -39,7 +40,7 @@ namespace Descriptive_Statistics
 
 
         /* Returns the mean value of the range of numbers in an array */
-        public double GetMean(double[] numbers)
+        public static double GetMean(double[] numbers)
         {
             if (numbers == null || numbers.Length == 0) throw new ArgumentException("Passed array should not be empty");
             double sum = numbers.Sum();
@@ -48,7 +49,7 @@ namespace Descriptive_Statistics
 
 
         /* Returns the median value of the range of numbers in an array. */
-        public double GetMedian(double[] numbers)
+        public static double GetMedian(double[] numbers)
         {
             if (numbers == null || numbers.Length == 0) throw new ArgumentException("Passed array should not be empty");
 
@@ -67,7 +68,7 @@ namespace Descriptive_Statistics
 
 
         /* Returns the range of most frequent numbers in an array. */
-        public double GetMode(double[] numbers)
+        public static double GetMode(double[] numbers)
         {
             if (numbers == null || numbers.Length == 0) throw new ArgumentException("Passed array should not be empty");
 
@@ -98,7 +99,7 @@ namespace Descriptive_Statistics
 
 
         /* Returns the standard deviation of the mean of the set of numbers in an array. */
-        public double GetStandardDeviation(double[] numbers)
+        public static double GetStandardDeviation(double[] numbers)
         {
             if (numbers == null || numbers.Length == 0) throw new ArgumentException("Passed array should not be empty");
 
@@ -116,6 +117,20 @@ namespace Descriptive_Statistics
             double standardDeviation = Math.Sqrt(sumOfSquareDeviations / numbers.Length);
 
             return standardDeviation;
+        }
+
+
+        /* Returns the string representation of accessible statistical information */
+        static public string GetStatisticalData(double[] numbers)
+        {
+            return @$"
+                    The maximum number     : {GetMaximum(numbers)}
+                    The minimum number     : {GetMinimum(numbers)}
+                    The mean number        : {GetMean(numbers)}
+                    The median number      : {GetMedian(numbers)}
+                    The mode number        : {GetMode(numbers)}
+                    The standard deviation : {GetStandardDeviation(numbers)}";
+
         }
 
     }
